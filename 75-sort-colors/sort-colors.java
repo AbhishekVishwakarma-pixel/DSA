@@ -1,5 +1,6 @@
 class Solution {
     public void sortColors(int[] nums) {
+        // Deutch National Flag algo(DNF)
         int low=0;
         int mid=0;
         int high=nums.length-1;
