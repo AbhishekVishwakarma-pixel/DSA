@@ -1,9 +1,12 @@
 class Solution {
-    public int fibonacci(int n){
-        if(n<=1) return n;
-        return fibonacci(n-1)+fibonacci(n-2);
-    }
     public int fib(int n) {
-       return fibonacci(n);
+        int a=0,b=1,sum=0;
+        if(n==1) return 1;
+        for(int i=1;i<n;i++){
+            sum=a+b;
+            a=b;
+            b=sum;
+        }
+        return sum;
     }
 }
