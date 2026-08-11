@@ -13,7 +13,7 @@ class Solution {
             else if(cnt==2) r=i; 
             if(m!=-1 && r!=-1) break;
         }
-        int[] arr=new int[]{r,m};
+        int[] arr={r,m};
         return arr;
     }
 }
