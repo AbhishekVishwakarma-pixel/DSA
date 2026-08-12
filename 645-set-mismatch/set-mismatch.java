@@ -1,17 +1,21 @@
 class Solution {
-    public int[] findErrorNums(int[] nums) {
-        int n=nums.length;
-        int[] hashArray=new int[n+1];
-
+    public int[] findErrorNums(int[] arr) {
+        int n=arr.length;
+        long S=0,S2=0;
+        long Sn=((long)n*(n+1))/2;
+        long S2n=((long)n*(n+1)*(2*n+1))/6;
         for(int i=0;i<n;i++){
-            hashArray[nums[i]]++;
+            S+=arr[i];
+            S2+=(long)arr[i]*arr[i];
         }
-        int repeating=-1,missing=-1;
-        for(int i=1;i<=n;i++){
-            if(hashArray[i]==2) repeating=i;
-            else if(hashArray[i]==0) missing=i;
-            if(missing!=-1 && repeating!=-1) break;
-        }
-        return new int[]{repeating,missing};
+        long val1=S-Sn;
+        long val2=S2-S2n;
+        val2=val2/val1;
+        //  x is the repeating number
+        long x=(val1+val2)/2;
+        //  y is the missing value
+        long y=x-val1;
+        
+        return new int[]{(int)x,(int)y};
     }
 }
