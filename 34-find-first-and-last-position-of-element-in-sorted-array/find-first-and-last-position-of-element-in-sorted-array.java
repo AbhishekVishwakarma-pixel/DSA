@@ -1,44 +1,43 @@
 class Solution {
-    int lowerBound(int[] arr, int target) {
-        // code here
-        int low=0;
+    public static int firstOccurance(int[] arr,int k){
+    int n=arr.length;
+    int low=0;
+    int high=n-1;
+    int lc=-1;
+    while(low<=high){
+        int mid=(low+high)/2;
+        if(arr[mid]==k){
+            lc=mid;
+            high=mid-1;
+        }
+        else if(arr[mid]>k){
+            high=mid-1;
+        }
+        else low=mid+1;
+    }
+    return lc;
+    }
+    public static int lastOccurance(int[] arr,int k){
         int n=arr.length;
+        int low=0;
         int high=n-1;
-        int ans=n;
+        int fc=-1;
         while(low<=high){
             int mid=(low+high)/2;
-            if(arr[mid]>=target){
-                ans=mid;
-                high=mid-1;
+            if(arr[mid]==k){
+                fc=mid;
+                low=mid+1;
             }
-            else low=mid+1;
+            else if(arr[mid]<k) low=mid+1;
+            else high=mid-1;
         }
-        return ans;
-    }    
-   
-    int upperBound(int[] arr, int target) {
-        // code here
-        int low=0;
-        int n=arr.length;
-        int high=n-1;
-        int ans=n;
-        while(low<=high){
-            int mid=(low+high)/2;
-            if(arr[mid]>target){
-                ans=mid;
-                high=mid-1;
-            }
-            else low=mid+1;
-        }
-        return ans;
-}
-
+        return fc;
+    }
     public int[] searchRange(int[] nums, int target) {
-      int lb=lowerBound(nums,target);
-      int[] arr={-1,-1};
-      if(lb==nums.length ||nums[lb]!=target) return arr;
-      arr[0]=lb;
-      arr[1]=upperBound(nums,target)-1;      
-      return arr;
+        int fc=firstOccurance(nums,target);
+        if(fc==-1) return new int[] {-1,-1};
+        int lc=lastOccurance(nums,target);
+        return new int[]{fc,lc};
+        
     }
 }
