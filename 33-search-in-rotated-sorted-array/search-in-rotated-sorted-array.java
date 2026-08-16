@@ -16,7 +16,7 @@ class Solution {
             }
 
             // Chechking for the right half is sorter or not
-            if(nums[mid]<=nums[high]){
+            else{
                 if(nums[mid]<=target && target<=nums[high]){
                     low=mid+1;
                 }
