@@ -5,18 +5,20 @@ class Solution {
         int high=n-1;
         int ans=Integer.MAX_VALUE;
         int val=Integer.MAX_VALUE;
+
         while(low<=high){
             int mid=(low+high)/2;
             if(nums[low]<=nums[mid]){
                 val=nums[low];
                 low=mid+1;
             }
-            else {
+            else{
                 val=nums[mid];
                 high=mid-1;
             }
-            ans=Math.min(val,ans);
+            ans=Math.min(ans,val);
         }
-        return ans;
+        return ans;    
     }
+    
 }
