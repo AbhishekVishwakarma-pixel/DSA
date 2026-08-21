@@ -13,16 +13,16 @@ class Solution {
             }
             else flowers=0;
         }
-        return bouquets >=m;
+        return bouquets>=m;
     }
-    public int minDays(int[] bloomDay, int m, int k) {
-        int low=0;
-        int high=0;
-        if((long)m*k> bloomDay.length) return -1;
 
+    public int minDays(int[] bloomDay, int m, int k) {
+        int low=1;
+        int high=0;
+        if((long)m*k>bloomDay.length) return -1;
         for(int day :bloomDay){
-            low=Math.min(day,low);
-            high=Math.max(day,high);
+            low=Math.min(low,day);
+            high=Math.max(high,day);
         }
         while(low<=high){
             int mid=low +(high-low)/2;
