@@ -2,7 +2,7 @@ class Solution {
     int sum(int[] arr,int k){
         int sum=0;
         for(int i=0;i<arr.length;i++){
-            sum+=Math.ceil((double)arr[i]/k);
+           sum += (arr[i] + k - 1) / k;
         }
         return sum;
     }
