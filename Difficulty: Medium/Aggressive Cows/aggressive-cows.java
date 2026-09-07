@@ -1,32 +1,28 @@
 class Solution {
-    public boolean canWePlace(int[] arr,int dist,int cows){
+    boolean canWePlace(int[] arr,long dist,int cows){
         int count=1;
         int last=arr[0];
-        for(int i=1;i<arr.length;i++){
-            if(arr[i]-last>=dist){
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]-last>dist){
                 count++;
                 last=arr[i];
             }
             if(count>=cows) return true;
         }
-        return false;                     
+        return false;
     }
     public int aggressiveCows(int[] arr, int k) {
         // code here
         Arrays.sort(arr);
-        int max=arr[0];
-        int min=arr[0];
-        for(int i:arr){
-            max=Math.max(i,max);
-            min=Math.min(i,min);
-        }
-        int ans=0;
-        for(int i=1;i<=max-min;i++){
-            if(canWePlace(arr,i,k)){
-                ans=i;
+        long low=1;
+        long high=arr[arr.length-1]-arr[0];
+        while(low<=high){
+            long mid=low +(high-low)/2;
+            if(canWePlace(arr,mid,k)){
+                low=mid+1;
             }
-            else break;
+            else high=mid-1;
         }
-        return ans;
+        return (int)low;
     }
 }
