@@ -8,18 +8,17 @@ class Solution {
                 isAllocated++;
                 sum=arr[i];
             }
-            else  sum+=arr[i];
+            else sum+=arr[i];
         }
-        if(isAllocated>k) return false;
-        else return true;
+        if(isAllocated>k)return false;
+        return true;
     }
     public int splitArray(int[] arr, int k) {
-        if(k>arr.length) return -1;
         long low=0;
         long high=0;
         for(int i:arr){
+            low=Math.max(i,low);
             high+=i;
-            low=Math.max(low,i);
         }
         while(low<=high){
             long mid=low+(high-low)/2;
@@ -28,7 +27,6 @@ class Solution {
             }
             else low=mid+1;
         }
-        return (int) low;
-
+        return (int)low;
     }
 }
