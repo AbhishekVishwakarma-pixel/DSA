@@ -1,5 +1,5 @@
 class Solution {
-    boolean canWePlace(int arr[],int dist,int cows){
+    boolean canWePlace(int[] arr,long dist,int cows){
         int count=1;
         int last=arr[0];
         for(int i=1;i<arr.length;i++){
@@ -7,23 +7,22 @@ class Solution {
                 count++;
                 last=arr[i];
             }
-            if(count>=cows){
-                return true;
-            }
-        }
+            if(count>=cows) return true;
+        } 
         return false;
     }
-    public int maxDistance(int[] arr, int k) {
+    public int maxDistance(int[] arr, int cows) {
         Arrays.sort(arr);
-        int low=1;
-        int high=arr[arr.length-1]-arr[0];
+        long low=1;
+        long high=arr[arr.length-1]-arr[0];
         while(low<=high){
-            int mid=low+(high-low)/2;
-            if(canWePlace(arr,mid,k)){
+            long mid=low+(high-low)/2;
+            if(canWePlace(arr,mid,cows)){
                 low=mid+1;
             }
             else high=mid-1;
         }
-        return high;
+        return (int)high;
+
     }
 }
