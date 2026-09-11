@@ -9,10 +9,9 @@ class Solution {
             int x=mid/m;
             int y=mid%m;
             if(arr[x][y]==target) return true;
-            else if(arr[x][y]>target) high=mid-1;
+            if(arr[x][y]>target) high=mid-1;
             else low=mid+1;
         }
-
         return false;
     }
 }
