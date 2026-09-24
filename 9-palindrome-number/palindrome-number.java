@@ -11,7 +11,7 @@ class Solution {
             y=y/10;
             num=num*10+rem;
         }
-        if(num>Integer.MAX_VALUE || num<Integer.MIN_VALUE) return false;
+        // if(num>Integer.MAX_VALUE || num<Integer.MIN_VALUE) return false;
         
         if(num==x) return true;
         return false;
